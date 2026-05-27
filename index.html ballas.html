@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Ballas · Marc · Leader Bewerbung</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --purple: #6B21A8;
+    --purple-light: #9333EA;
+    --purple-bright: #A855F7;
+    --purple-glow: rgba(168,85,247,0.15);
+    --bg: #0a0a0f;
+    --bg2: #0f0f1a;
+    --bg3: #13131f;
+    --card: rgba(255,255,255,0.03);
+    --border: rgba(168,85,247,0.2);
+    --text: #e8e0f0;
+    --muted: #7c6e8a;
+    --gold: #C084FC;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-brand { font-family: 'Bebas Neue'; font-size: 1.4rem; color: var(--purple-bright); letter-spacing: 3px; }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--purple-bright); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; text-align: center; padding: 2rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(107,33,168,0.25) 0%, transparent 70%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3;
+  }
+  .hero-tag {
+    font-family: 'JetBrains Mono'; font-size: 0.7rem; letter-spacing: 4px;
+    color: var(--purple-bright); text-transform: uppercase; margin-bottom: 1.5rem;
+    border: 1px solid var(--border); padding: 0.4rem 1rem; border-radius: 20px;
+    background: var(--purple-glow); position: relative;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue'; font-size: clamp(5rem, 15vw, 12rem);
+    line-height: 0.9; letter-spacing: 4px; position: relative;
+    background: linear-gradient(135deg, #fff 0%, var(--purple-bright) 60%, var(--purple) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 40px rgba(168,85,247,0.4));
+  }
+  .hero-sub {
+    font-family: 'JetBrains Mono'; font-size: 0.9rem; color: var(--muted);
+    letter-spacing: 6px; text-transform: uppercase; margin-top: 1.5rem; position: relative;
+  }
+  .hero-badge {
+    display: inline-block; margin-top: 2.5rem; position: relative;
+    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-bright) 100%);
+    color: #fff; font-family: 'Bebas Neue'; font-size: 1rem; letter-spacing: 4px;
+    padding: 0.7rem 2rem; border-radius: 4px;
+    box-shadow: 0 0 30px rgba(168,85,247,0.4);
+  }
+  .hero-scroll {
+    position: absolute; bottom: 2rem;
+    font-family: 'JetBrains Mono'; font-size: 0.65rem; color: var(--muted); letter-spacing: 3px;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+  /* SECTIONS */
+  section { padding: 6rem 2rem; max-width: 900px; margin: 0 auto; }
+  .section-num {
+    font-family: 'JetBrains Mono'; font-size: 0.65rem; color: var(--purple-bright);
+    letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'Bebas Neue'; font-size: clamp(2.5rem, 6vw, 4rem); letter-spacing: 2px;
+    line-height: 1; margin-bottom: 3rem; color: #fff;
+  }
+  .section-title em { color: var(--purple-bright); font-style: normal; }
+  .divider { width: 60px; height: 2px; background: var(--purple-bright); margin: 1rem 0 2.5rem; }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    backdrop-filter: blur(8px);
+  }
+
+  /* ABOUT GRID */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .about-cell { background: var(--bg2); padding: 1.2rem 1.5rem; }
+  .about-label { font-family: 'JetBrains Mono'; font-size: 0.65rem; color: var(--muted); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .about-val { font-weight: 600; font-size: 1rem; color: #fff; }
+  .about-badge {
+    display: inline-block; background: var(--purple); color: #fff;
+    font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+    padding: 0.3rem 0.8rem; border-radius: 3px; font-family: 'JetBrains Mono';
+  }
+
+  /* FACTION COLUMNS */
+  .faction-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+  .faction-block { }
+  .faction-head {
+    font-family: 'JetBrains Mono'; font-size: 0.65rem; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--purple-bright); margin-bottom: 1rem;
+    padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+  }
+  .faction-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .faction-rank {
+    font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--purple-bright);
+    min-width: 28px; text-align: center;
+    background: var(--purple-glow); border: 1px solid var(--border);
+    border-radius: 3px; padding: 0.15rem 0.3rem;
+  }
+  .faction-name { font-size: 0.85rem; color: var(--text); font-weight: 500; }
+  .faction-vize {
+    font-family: 'JetBrains Mono'; font-size: 0.6rem; color: var(--gold);
+    background: rgba(192,132,252,0.1); border: 1px solid rgba(192,132,252,0.3);
+    border-radius: 3px; padding: 0.1rem 0.4rem; text-transform: uppercase; letter-spacing: 1px;
+    white-space: nowrap;
+  }
+
+  /* WARUM */
+  .warum-text { line-height: 1.8; color: var(--text); font-size: 0.95rem; margin-bottom: 1.5rem; }
+  .warum-text strong { color: var(--purple-bright); font-weight: 600; }
+  .pills { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem; }
+  .pill {
+    background: var(--purple-glow); border: 1px solid var(--border);
+    border-radius: 20px; padding: 0.45rem 1rem; font-size: 0.8rem;
+    color: var(--purple-bright); font-family: 'JetBrains Mono'; letter-spacing: 1px;
+  }
+
+  /* RP CARDS */
+  .rp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .rp-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+  .rp-num { font-family: 'Bebas Neue'; font-size: 2.5rem; color: var(--purple); line-height: 1; margin-bottom: 0.5rem; }
+  .rp-title { font-weight: 700; font-size: 0.85rem; color: #fff; margin-bottom: 0.5rem; letter-spacing: 0.5px; }
+  .rp-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+  /* QUALITÄTEN */
+  .qual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .qual-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; }
+  .qual-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+  .qual-title { font-weight: 700; font-size: 0.9rem; color: var(--purple-bright); margin-bottom: 0.4rem; }
+  .qual-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+  /* RANKS TABLE */
+  .rank-table { width: 100%; border-collapse: collapse; }
+  .rank-table th {
+    font-family: 'JetBrains Mono'; font-size: 0.65rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--muted); text-align: left;
+    padding: 0.75rem 1rem; border-bottom: 1px solid var(--border);
+  }
+  .rank-table td { padding: 0.75rem 1rem; font-size: 0.85rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .rank-table tr:last-child td { border-bottom: none; }
+  .rank-section td {
+    font-family: 'JetBrains Mono'; font-size: 0.6rem; letter-spacing: 3px;
+    color: var(--purple-bright); text-transform: uppercase; background: var(--purple-glow);
+    padding: 0.5rem 1rem;
+  }
+  .rank-num { font-family: 'JetBrains Mono'; color: var(--purple-bright); font-weight: 700; }
+
+  /* BEITRITT */
+  .beitritt-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .beitritt-list li {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.9rem 1.2rem; background: var(--bg2);
+    border: 1px solid var(--border); border-radius: 6px; font-size: 0.9rem;
+  }
+  .beitritt-list li::before { content: "→"; color: var(--purple-bright); font-family: 'JetBrains Mono'; font-weight: 700; }
+
+  /* LEITFADEN */
+  .faq-item { border: 1px solid var(--border); border-radius: 6px; margin-bottom: 0.5rem; overflow: hidden; }
+  .faq-q {
+    padding: 1rem 1.2rem; display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; background: var(--bg2); font-weight: 600; font-size: 0.85rem;
+    transition: background 0.2s;
+  }
+  .faq-q:hover { background: var(--bg3); }
+  .faq-num { font-family: 'JetBrains Mono'; color: var(--purple-bright); font-size: 0.75rem; margin-right: 0.75rem; }
+  .faq-chevron { color: var(--purple-bright); transition: transform 0.3s; }
+  .faq-a { display: none; padding: 1rem 1.2rem; font-size: 0.85rem; color: var(--muted); line-height: 1.7; border-top: 1px solid var(--border); }
+  .faq-a strong { color: var(--purple-bright); }
+  .faq-item.open .faq-a { display: block; }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+  .score-badge {
+    display: inline-flex; flex-direction: column; align-items: center;
+    background: var(--purple); padding: 1.5rem 2.5rem; border-radius: 8px;
+    margin-top: 2rem; box-shadow: 0 0 40px rgba(168,85,247,0.3);
+  }
+  .score-num { font-family: 'Bebas Neue'; font-size: 3rem; color: #fff; line-height: 1; }
+  .score-label { font-family: 'JetBrains Mono'; font-size: 0.6rem; letter-spacing: 3px; color: rgba(255,255,255,0.7); text-transform: uppercase; margin-top: 0.25rem; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 2rem; text-align: center;
+    background: var(--bg2);
+  }
+  footer .footer-brand { font-family: 'Bebas Neue'; font-size: 2rem; color: var(--purple-bright); letter-spacing: 4px; margin-bottom: 0.5rem; }
+  footer .footer-meta { font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--muted); letter-spacing: 2px; }
+
+  @media (max-width: 600px) {
+    .about-grid, .faction-wrap, .rp-grid, .qual-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">BALLAS</div>
+  <div class="nav-links">
+    <a href="#about">Über mich</a>
+    <a href="#warum">Warum Leader</a>
+    <a href="#rp">RP Konzept</a>
+    <a href="#qualitaet">Qualitäten</a>
+    <a href="#ranks">Rangkonzept</a>
+    <a href="#beitritt">Beitritt</a>
+    <a href="#leitfaden">Leitfaden</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="max-width:100%; padding-top:60px;">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-tag">Grand RP · 2026</div>
+  <h1>THE BALLAS</h1>
+  <div class="hero-sub">Leader Bewerbung</div>
+  <div class="hero-badge">👑 Marc · Bewerbung als Leader</div>
+  <div class="hero-scroll">↓ Scroll</div>
+</section>
+
+<!-- ÜBER MICH -->
+<section id="about">
+  <div class="section-num">// 01</div>
+  <div class="section-title">Über <em>mich</em></div>
+  <div class="divider"></div>
+
+  <div class="about-grid">
+    <div class="about-cell">
+      <div class="about-label">Name (OOC)</div>
+      <div class="about-val">Marc</div>
+    </div>
+    <div class="about-cell">
+      <div class="about-label">IC Name</div>
+      <div class="about-val">Michael Benko</div>
+    </div>
+    <div class="about-cell">
+      <div class="about-label">Reisepass</div>
+      <div class="about-val">#243336</div>
+    </div>
+    <div class="about-cell">
+      <div class="about-label">Discord</div>
+      <div class="about-val">0xmarcx0</div>
+    </div>
+    <div class="about-cell">
+      <div class="about-label">Erfahrung</div>
+      <div class="about-val">~2 Jahre auf Grand RP</div>
+    </div>
+    <div class="about-cell">
+      <div class="about-label">Bewerbung als</div>
+      <div class="about-val"><span class="about-badge">Leader der Gang</span></div>
+    </div>
+  </div>
+
+  <div class="faction-wrap" style="margin-top:2.5rem;">
+    <div class="faction-block">
+      <div class="faction-head">Crime</div>
+      <!-- 3x Vagos Vize -->
+      <div class="faction-item">
+        <span class="faction-vize">VIZE</span>
+        <span class="faction-name">Los Santos Vagos</span>
+      </div>
+      <div class="faction-item">
+        <span class="faction-vize">VIZE</span>
+        <span class="faction-name">Los Santos Vagos</span>
+      </div>
+      <div class="faction-item">
+        <span class="faction-vize">VIZE</span>
+        <span class="faction-name">Los Santos Vagos</span>
+      </div>
+      <div class="faction-item">
+        <span class="faction-rank">10</span>
+        <span class="faction-name">The Ballas</span>
+      </div>
+      <div class="faction-item">
+        <span class="faction-rank">10</span>
+        <span class="faction-name">Marabunta Grande</span>
+      </div>
+      <div class="faction-item">
+        <span class="faction-rank">10</span>
+        <span class="faction-name">Bloods</span>
+      </div>
+      <div class="faction-item">
+        <span class="faction-rank">10</span>
+        <span class="faction-name">Grove Street Families</span>
+      </div>
+    </div>
+    <div class="faction-block">
+      <div class="faction-head">State</div>
+      <div class="faction-item">
+        <span class="faction-rank">16</span>
+        <span class="faction-name">Nationale Garde</span>
+      </div>
+      <div class="faction-item">
+        <span class="faction-rank">12</span>
+        <span class="faction-name">USSS</span>
+      </div>
+      <div class="faction-item">
+        <span class="faction-rank">23</span>
+        <span class="faction-name">SAHP</span>
+      </div>
+      <div class="faction-item">
+        <span class="faction-rank">13</span>
+        <span class="faction-name">LSPD</span>
+      </div>
+      <div class="faction-item">
+        <span class="faction-rank">12</span>
+        <span class="faction-name">EMS</span>
+      </div>
+      <div class="faction-item">
+        <span class="faction-rank">8</span>
+        <span class="faction-name">FIB</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WARUM LEADER -->
+<section id="warum">
+  <div class="section-num">// 02</div>
+  <div class="section-title">Warum ich <em>Leader</em> werden will</div>
+  <div class="divider"></div>
+  <div class="card">
+    <p class="warum-text">Ich hab oft versucht Leader zu werden bei Crime Orgas — dabei Fehler gemacht, die ich jetzt korrigieren will. In meiner Zeit als High Rank in Crime und State hab ich <strong>starke Führungsstärke</strong> bewiesen.</p>
+    <p class="warum-text">Mein Ziel: The Ballas zur stärksten und präsentesten Gang auf Grand RP machen. Als Leader will ich eine Gang führen, die <strong>sich bis zum Ende hält</strong> und als positiver Teil der Grand-Geschichte in Erinnerung bleibt. Jedes Mitglied soll seine Stärken einbringen können und sich auf die anderen verlassen dürfen — das sichert den Fortbestand der Gang.</p>
+    <div class="pills">
+      <span class="pill">💜 Zusammenhalt</span>
+      <span class="pill">📈 Wachstum</span>
+      <span class="pill">🏴 Ghetto-Präsenz</span>
+      <span class="pill">💪 Führung</span>
+      <span class="pill">🤝 Respekt</span>
+    </div>
+  </div>
+</section>
+
+<!-- RP KONZEPT -->
+<section id="rp">
+  <div class="section-num">// 03</div>
+  <div class="section-title">RP <em>Verbesserungen</em></div>
+  <div class="divider"></div>
+  <div class="rp-grid">
+    <div class="rp-card">
+      <div class="rp-num">01</div>
+      <div class="rp-title">Aktivität gegen die NG</div>
+      <div class="rp-desc">Benson klauen und überfallen wird essenziell. FZ-Raids auch in Absprache mit anderen Gangs gemeinsam durchführen.</div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-num">02</div>
+      <div class="rp-title">Präsenz im Ghetto</div>
+      <div class="rp-desc">Aktiveres Zinken, gutes Crime RP, mehr Sprayen. Faire Auszahlungen bei Clands — wir sollen täglich spürbar sein.</div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-num">03</div>
+      <div class="rp-title">Ammu-Robs & Shop-Robs mit RP</div>
+      <div class="rp-desc">Kreatives Shop-RP als Abwechslung (z.B. Bauarbeiter RP) — damit erkenne ich, wer wirklich RP spielen will.</div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-num">04</div>
+      <div class="rp-title">Strengere Aufnahme</div>
+      <div class="rp-desc">Selektives Filtern der Member fördert faires RP. Aktivität und Qualität sind Pflicht, nicht optional.</div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-num">05</div>
+      <div class="rp-title">Events & Giveaways</div>
+      <div class="rp-desc">Car Meets, Deathmatches und interne Events um Spieler anzuregen. Giveaways für besonderes Engagement.</div>
+    </div>
+    <div class="rp-card">
+      <div class="rp-num">06</div>
+      <div class="rp-title">Strukturierte Hierarchie</div>
+      <div class="rp-desc">Klare Zuständigkeiten — jedes Mitglied weiß, wen es bei Problemen ansprechen soll. Kein Rechte-Abuse.</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALITÄTEN -->
+<section id="qualitaet">
+  <div class="section-num">// 04</div>
+  <div class="section-title">Was mich als Leader <em>auszeichnet</em></div>
+  <div class="divider"></div>
+  <div class="card" style="margin-bottom:1.5rem;">
+    <p style="line-height:1.8; font-size:0.95rem;">Was mich als Leader auszeichnet ist vor allem <strong style="color:var(--purple-bright)">meine Ruhe und mein Organisationstalent</strong>. Als High Rank in Crime und State hab ich gelernt, in stressigen Situationen einen kühlen Kopf zu bewahren und keine unnötigen Eskalationen zu verursachen. Ich fördere aktiv das RP und weiß, wann eine weitere Crime in den FZ-Raid passt. <strong style="color:var(--purple-bright)">Jedes Mitglied soll spüren, dass es wichtig ist</strong> — ehrlich, aber immer respektvoll.</p>
+  </div>
+  <div class="qual-grid">
+    <div class="qual-card"><div class="qual-icon">🧠</div><div class="qual-title">Ruhe & Besonnenheit</div><div class="qual-desc">In stressigen Situationen einen kühlen Kopf bewahren.</div></div>
+    <div class="qual-card"><div class="qual-icon">📋</div><div class="qual-title">Organisationstalent</div><div class="qual-desc">Starke Struktur aus Crime & State Erfahrung.</div></div>
+    <div class="qual-card"><div class="qual-icon">🎭</div><div class="qual-title">RP-Förderung</div><div class="qual-desc">Aktive Förderung von qualitativem RP.</div></div>
+    <div class="qual-card"><div class="qual-icon">👥</div><div class="qual-title">Mitglied-Wertschätzung</div><div class="qual-desc">Jedes Mitglied fühlt sich wichtig — ehrlich & respektvoll.</div></div>
+    <div class="qual-card"><div class="qual-icon">⚖️</div><div class="qual-title">Fairness</div><div class="qual-desc">Kein Rechte-Abuse, faire Entscheidungen.</div></div>
+  </div>
+</section>
+
+<!-- RANGKONZEPT -->
+<section id="ranks">
+  <div class="section-num">// 05</div>
+  <div class="section-title">Rang<em>konzept</em></div>
+  <div class="divider"></div>
+  <div class="card" style="padding:0; overflow:hidden;">
+    <table class="rank-table">
+      <thead>
+        <tr>
+          <th>Nr</th><th>Titel</th><th>Rolle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="rank-section"><td colspan="3">LEADERSCHAFT</td></tr>
+        <tr><td class="rank-num">12</td><td>El Patron</td><td>Leader der Org</td></tr>
+        <tr><td class="rank-num">11</td><td>El Capitan</td><td>Vize · Rechte Hand</td></tr>
+        <tr><td class="rank-num">10</td><td>El Cheffe</td><td>Ausbildung · Beschwerden</td></tr>
+        <tr class="rank-section"><td colspan="3">AUSBILDER & TURFER</td></tr>
+        <tr><td class="rank-num">09</td><td>Instructor</td><td>Ausbilder</td></tr>
+        <tr><td class="rank-num">08</td><td>Turf Lead</td><td>Leitet das Turf-Team</td></tr>
+        <tr><td class="rank-num">07</td><td>Turfer</td><td>Zuständig für Turfs</td></tr>
+        <tr class="rank-section"><td colspan="3">MITGLIEDER</td></tr>
+        <tr><td class="rank-num">06</td><td>Hermano</td><td>Vollmitglied · Zink-Rechte</td></tr>
+        <tr><td class="rank-num">05</td><td>Si-Caro</td><td>Aufstrebend</td></tr>
+        <tr><td class="rank-num">04</td><td>Chico</td><td>Treues Mitglied</td></tr>
+        <tr><td class="rank-num">03</td><td>Guerrero</td><td>Normales Mitglied</td></tr>
+        <tr><td class="rank-num">02</td><td>Amigo</td><td>Neuling</td></tr>
+        <tr class="rank-section"><td colspan="3">STRAFRANG</td></tr>
+        <tr><td class="rank-num">01</td><td>Snitch</td><td>Sanktionsrang</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- BEITRITT -->
+<section id="beitritt">
+  <div class="section-num">// 06</div>
+  <div class="section-title">Beitritts<em>kriterien</em></div>
+  <div class="divider"></div>
+  <ul class="beitritt-list">
+    <li>Mindestens Visum Stufe 5</li>
+    <li>Kenntnisse über das Regelwerk</li>
+    <li>Geistige Reife von 15+</li>
+    <li>Aktivität und Interesse an der Orga</li>
+    <li>Ausführliches Gespräch mit Rang 9 oder höher</li>
+    <li>Mindestens 80% beim Regelwerk-Test</li>
+  </ul>
+</section>
+
+<!-- LEITFADEN -->
+<section id="leitfaden">
+  <div class="section-num">// 07</div>
+  <div class="section-title">Ausbildungs<em>leitfaden</em></div>
+  <div class="divider"></div>
+  <p style="font-size:0.9rem; color:var(--muted); margin-bottom:1.5rem; line-height:1.7;">Zuerst den Reisepass anfordern. Visum unter 5 → wegschicken. Über 5 → Fragen stellen. Abnahme nur durch <strong style="color:#fff">Rang 9 oder höher</strong>. Bewerber muss mindestens <strong style="color:#fff">80%</strong> richtig beantworten.</p>
+
+  <div id="faq"></div>
+
+  <div style="text-align:center;">
+    <div class="score-badge">
+      <div class="score-num">80%</div>
+      <div class="score-label">Mindest-Score · Nicht erfüllt → nächsten Tag verweisen</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">The Ballas</div>
+  <div class="footer-meta">Bewerbung · Marc · Michael Benko · Pass #243336 · Discord 0xmarcx0</div>
+  <div style="margin-top:1rem; font-size:1.2rem;">💀</div>
+</footer>
+
+<script>
+const faqs = [
+  { num:"F01", q:"Nenne 4 offizielle Greenzones / 2–4 inoffizielle Greenzones.", a:"<strong>Offiziell:</strong> Strandmarkt, Staats-HQs, Anfänger-Jobs, Casino, Post<br><strong>Inoffiziell:</strong> 24/7, Schwarzmarkt, Parkplätze, Geldautomaten" },
+  { num:"F02", q:"Du wachst im MD auf — wie lange darfst du dich deinem Todesort nicht nähern?", a:"<strong>15 Minuten.</strong>" },
+  { num:"F03", q:"Du wirst von der Polizei verfolgt — nach welcher Zeit darfst du das HQ wieder betreten?", a:"<strong>5 Minuten.</strong>" },
+  { num:"F04", q:"Ein Gangmitglied liegt bewusstlos mit Heavy Sniper am Boden — du findest es als Erster.", a:"Aufheben oder Verstärkung rufen. Wichtig: <strong>NICHT Mercykillen!</strong>" },
+  { num:"F05", q:"Was ist beim Wiederbeleben zu beachten?", a:"<strong>Nicht unter Beschuss wiederbeleben!</strong>" },
+  { num:"F06", q:"Wie lange musst du deine POV abrufbereit haben?", a:"Jedes Mitglied muss seine POV für <strong>48 Stunden</strong> behalten." },
+  { num:"F07", q:"Welche Dinge sind im HQ verboten?", a:"Gangmitglieder im HQ <strong>verletzen, töten oder ausrauben</strong> ist verboten." },
+  { num:"F08", q:"Was darf man beim FZ und BS nicht machen?", a:"<strong>Fort Zancudo:</strong> LMG, Sniper, Tazer, Highground verboten<br><strong>Bankraub:</strong> LMG, Sniper, Tazer, Wasser vor Event-Beginn betreten" },
+  { num:"F09", q:"Darf man in Handschellen den IC T-Funk nutzen?", a:"<strong>Nein.</strong>" },
+  { num:"F10", q:"Wie reagiert man, wenn man gezinkt wird?", a:"<strong>Kein PDA · Kein Funk · Kein T-Chat · Kein CL</strong>" },
+];
+
+const faqEl = document.getElementById('faq');
+faqs.forEach(f => {
+  const item = document.createElement('div');
+  item.className = 'faq-item';
+  item.innerHTML = `<div class="faq-q"><span><span class="faq-num">${f.num}</span>${f.q}</span><span class="faq-chevron">▾</span></div><div class="faq-a">${f.a}</div>`;
+  item.querySelector('.faq-q').addEventListener('click', () => item.classList.toggle('open'));
+  faqEl.appendChild(item);
+});
+</script>
+</body>
+</html>
